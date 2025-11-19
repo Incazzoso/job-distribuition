@@ -7,8 +7,58 @@
     <link rel="stylesheet" href="../style/style.css">
 </head>
 <body>
-    <div id="map">
+    
+
+<!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="#" class="logo">Lavorix</a></li>
+      <div class="spacer"></div>
+      <li><a href="#">Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contenitore centrale -->
+  <div class="container">
+    <div class="configuratore">
+      <h2>Configuratore Parametri</h2>
+      <label for="parametro">Parametro:</label>
+      <select id="parametro">
+        <option>Lavoro</option>
+        <option>Industria</option>
+        <option>Agricoltura</option>
+      </select>
+
+      <label for="regione">Regione:</label>
+      <select id="regione">
+        <option>Tutte le regioni</option>
+        <option>Lombardia</option>
+        <option>Lazio</option>
+        <option>Sicilia</option>
+      </select>
+
+      <label for="frequenza">Frequenza:</label>
+      <select id="frequenza">
+        <option>Assoluta</option>
+        <option>Percentuale</option>
+      </select>
     </div>
+
+    <div class="mappa">
+      <h2>Mappa delle Regioni</h2>
+
+        <div id="map">
+        </div>
+
+    </div>
+  </div>
+
+  <!-- Sezione news di esempio -->
+  <div class="news-section">
+    <h1>Ultime News</h1>
+    <p>Questa è una sezione dimostrativa con stile arrotondato.</p>
+  </div>
+
 
     <!-- Libreria Leaflet -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
