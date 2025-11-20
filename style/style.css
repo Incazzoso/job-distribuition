@@ -1,6 +1,6 @@
 #map {
-    height: 500px;
-    width: 500px;
+    height: 700px;
+    width: 650px;
 }
 
     * {
@@ -66,8 +66,7 @@
     .container {
       display: flex;
       justify-content: center;
-      align-items: stretch;
-      width: 80%;
+      width: 67%;
       margin: 40px auto;
       background-color: rgba(255, 255, 255, 0.8);
       border-radius: 12px;
@@ -82,9 +81,17 @@
     }
 
     .mappa {
-      flex: 3;
-      padding: 20px;
+      flex: 2;
+      padding: 10px; 
+      border-radius: 16px;
       background-color: rgba(240,240,255,0.9);
+    }
+    .div_mappa {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border-radius: 20px;
     }
 
     h2 {
