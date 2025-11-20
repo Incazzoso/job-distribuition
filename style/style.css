@@ -1,4 +1,130 @@
 #map {
     height: 700px;
-    width: 700px;
+    width: 650px;
 }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://picsum.photos/1600/900?blur') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* Navbar */
+    nav {
+      background-color: black;
+      overflow: hidden;
+      border-radius: 1000px;
+      margin: 20px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav li {
+      display: inline-block;
+    }
+
+    nav a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+      border-radius: 1000px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      background-color: grey;
+      color: white;
+    }
+
+    /* Logo/Titolo */
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    /* Spazio centrale vuoto */
+    .spacer {
+      flex: 1;
+    }
+
+    /* Contenitore principale */
+    .container {
+      display: flex;
+      justify-content: center;
+      width: 67%;
+      margin: 40px auto;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+
+    .configuratore {
+      flex: 1;
+      padding: 20px;
+      background-color: rgba(255,255,255,0.9);
+    }
+
+    .mappa {
+      flex: 2;
+      padding: 10px; 
+      border-radius: 16px;
+      background-color: rgba(240,240,255,0.9);
+    }
+    .div_mappa {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border-radius: 20px;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    /* Sezione news di esempio */
+    .news-section {
+      background-color: white;
+      padding: 20px;
+      border-radius: 1000px;
+      margin: 20px auto;
+      width: 50%;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: Arial;
+      font-size: 120%;
+      color: white;
+      text-align: center;
+    }
+
+    ul {
+      color: white;
+      list-style-type: square;
+    }
+
