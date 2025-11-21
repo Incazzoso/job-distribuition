@@ -1,6 +1,8 @@
 #map {
     height: 700px;
     width: 650px;
+    border-radius: 20px;
+    border: 2px solid black;
 }
 
     * {
@@ -40,7 +42,7 @@
       display: block;
       color: white;
       text-align: center;
-      padding: 14px 20px;
+      padding: 20px 20px;
       text-decoration: none;
       border-radius: 1000px;
       font-weight: bold;
@@ -48,6 +50,7 @@
 
     nav a:hover {
       background-color: grey;
+      border-radius: 1000px;
       color: white;
     }
 
@@ -55,11 +58,13 @@
     .logo {
       font-size: 22px;
       font-weight: bold;
+      border-radius: 1000px;
     }
 
     /* Spazio centrale vuoto */
     .spacer {
       flex: 1;
+      border-radius: 1000px;
     }
 
     /* Contenitore principale */
@@ -77,13 +82,12 @@
     .configuratore {
       flex: 1;
       padding: 20px;
-      background-color: rgba(255,255,255,0.9);
+      background-color: rgba(240,240,255,0.9);
     }
 
     .mappa {
       flex: 2;
-      padding: 10px; 
-
+      padding: 10px;
       background-color: rgba(240,240,255,0.9);
     }
     .div_mappa {
@@ -102,8 +106,8 @@
       width: 100%;
       padding: 8px;
       margin-bottom: 15px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+      border-radius: 20px;
+      border: 2px solid black;
     }
 
     /* Sezione news di esempio */
