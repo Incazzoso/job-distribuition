@@ -55,12 +55,14 @@
       text-decoration: none;
       border-radius: 20px;
       font-weight: bold;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     nav a:hover {
       background-color: grey;
       border-radius: 20px;
       color: white;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     nav .logo {
@@ -72,8 +74,8 @@
 
     /* Spazio centrale vuoto */
     .spacer {
-      flex: 1;
-      border-radius: 1000px;
+      flex: 2;
+
     }
 
     /* Contenitore principale */
@@ -82,8 +84,8 @@
       justify-content: center;
       width: 67%;
       margin: 40px auto;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 12px;
+      background-color:  rgba(240,240,255,0.9);
+      border-radius: 20px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       overflow: hidden;
     }
@@ -199,11 +201,14 @@
   background: #444;
 }
 .container_1 {
+  width: 80%;
+  height: auto  ;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  background-color:  rgba(240,240,255,0.9);
+  height: 50vh;
+  width: 50vw;
 }
 
 .social-container {
