@@ -1,3 +1,5 @@
+import { getOccupati } from './istat_API.js';
+
 const boundsItalia = [
     [35.5, 6.5],
     [47.2, 18.5]
@@ -13,18 +15,27 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 
-let geojson;
-
 fetch('../code/limits_IT_regions.geojson')
     .then(response => response.json())
     .then(data => {
-    L.geoJSON(data, {
+        L.geoJSON(data, {
             style: {
-            color: "#3388ff",
-            weight: 2
-        },
-    onEachFeature: function (feature, layer) {
-        layer.bindPopup(feature.properties.reg_name);
-        }
-    }).addTo(map);
-});
+                color: "#3388ff",
+                weight: 2
+            },
+            onEachFeature: async function (feature, layer) {
+                const codiceRegione = feature.properties.cod_reg; // es. "LOM"
+                try {
+                    const dati = await getOccupati(codiceRegione);
+                    // esempio: prendo la prima professione
+                    const occupati = dati[0].valore;
+                    layer.bindPopup(
+                        `${feature.properties.reg_name}<br>Occupati: ${occupati}`
+                    );
+                } catch (err) {
+                    console.error(err);
+                    layer.bindPopup(`${feature.properties.reg_name}<br>Dati non disponibili`);
+                }
+            }
+        }).addTo(map);
+    });
