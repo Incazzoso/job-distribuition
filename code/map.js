@@ -21,16 +21,19 @@ let geoJsonDataCache = null; // Cache per i poligoni
 const lavoroDropdown = document.getElementById('lavoro');
 
 // --- Funzioni di Stile ---
-const MAX_DENSITA = 10000; // Valore stimato (aggiusta in base ai dati ISTAT reali)
+const MAX_DENSITA = 600000; 
 
 function getColor(d) {
-    return d > 5000 ? '#800026' :
-            d > 2000 ? '#BD0026' :
-            d > 800  ? '#E31A1C' :
-            d > 200  ? '#d47846ff' :
-            d > 50   ? '#FEB24C' :
-            d > 50   ? '#FFEDA0':
-            '#ffffffff';
+    return d > 300000 ? '#4a1486' : // Viola scuro (altissima densità)
+           d > 150000 ? '#6a51a3' : // Viola medio
+           d > 80000  ? '#8c6bb1' : // Viola chiaro
+           d > 40000  ? '#a785c9' : // Lilla
+           d > 20000  ? '#d4b9da' : // Lilla molto chiaro
+           d > 10000  ? '#f2f0f7' : // Grigio/bianco (media-bassa densità)
+           d > 5000   ? '#deebf7' : // Azzurro chiaro
+           d > 1000   ? '#c6dbef' : // Azzurro medio
+           d > 500    ? '#9ecae1' : // Azzurro scuro
+                        '#e0e0e0';   // Grigio (bassissima densità / 0)
 }
 
 function style(feature) {
@@ -38,7 +41,7 @@ function style(feature) {
     return {
         fillColor: getColor(densita),
         weight: 1,
-        opacity: 0.3,
+        opacity: 1, 
         color: 'white',
         fillOpacity: 0.8
     };
@@ -55,19 +58,30 @@ function onEachFeature(feature, layer) {
     );
 }
 
+// --- Funzione di Normalizzazione ISTAT (NUOVA) ---
+
+function normalizeIstatCode(code) {
+    // Garantisce che il codice sia una stringa di 2 cifre (es. 1 -> "01", 18 -> "18")
+    if (code === null || code === undefined) return null;
+    return String(code).padStart(2, '0');
+}
+
 // --- Logica di Integrazione Dati ---
 
 function integrateData(geoJson, istatResults) {
     const densitaLookup = {};
     istatResults.forEach(item => {
-        // La chiave è il codice regione numerico ISTAT
-        densitaLookup[item.codiceRegione] = item.valore; 
+        // Normalizziamo la chiave del JSON di simulazione (es. "3" o "03" -> "03")
+        const normalizedCode = normalizeIstatCode(item.codiceRegione);
+        densitaLookup[normalizedCode] = item.valore; 
     });
 
     const featuresWithData = geoJson.features.map(feature => {
-        // *** CAMBIATO QUI: usa il codice ISTAT numerico del GeoJSON ***
-        const codiceNumerico = feature.properties.reg_istat_code_num; 
+        // Normalizziamo la chiave del GeoJSON (es. 3 o "3" o "03" -> "03")
+        // Il campo è reg_istat_code_num
+        const codiceNumerico = normalizeIstatCode(feature.properties.reg_istat_code_num); 
         
+        // Ora il matching avviene sulla chiave normalizzata ("01", "03", ecc.)
         const densita = densitaLookup[codiceNumerico] || 0;
         
         // Creazione di un nuovo oggetto properties per evitare mutazioni
@@ -91,10 +105,10 @@ async function updateMap() {
     const selectedProfessione = lavoroDropdown.value;
 
     if (!selectedProfessione || !geoJsonDataCache) {
-        // Disegna i contorni base (grigio) se i dati non sono pronti o il lavoro non è selezionato
+        // Disegna i contorni base (grigio)
         geoJsonLayer = L.geoJSON(geoJsonDataCache || [], { 
             style: { fillColor: '#CCCCCC', weight: 1, color: 'white', fillOpacity: 0.5 },
-            onEachFeature: onEachFeature // Usa la funzione per mostrare il messaggio "Seleziona un lavoro"
+            onEachFeature: onEachFeature
         }).addTo(map);
         return;
     }
@@ -103,7 +117,7 @@ async function updateMap() {
     const codiciRegioneNumerici = geoJsonDataCache.features.map(f => f.properties.reg_istat_code_num);
 
     try {
-        // Chiamata asincrona veloce per tutti i dati in parallelo
+        // Chiamata asincrona per i dati (da istat_API.js)
         const istatResults = await getTuttiGliOccupati(codiciRegioneNumerici, selectedProfessione);
         
         // Integra e prepara il GeoJSON per la visualizzazione
