@@ -1,13 +1,13 @@
 {
   "Agricoltore": [
-    {"codiceRegione": "01", "valore": 18000},
+    {"codiceRegione": "01", "valore": 80000},
     {"codiceRegione": "02", "valore": 12000},
-    {"codiceRegione": "03", "valore": 15000},
+    {"codiceRegione": "03", "valore": 300000},
     {"codiceRegione": "04", "valore": 25000},
-    {"codiceRegione": "05", "valore": 22000},
+    {"codiceRegione": "05", "valore": 220000},
     {"codiceRegione": "06", "valore": 8000},
     {"codiceRegione": "07", "valore": 17000},
-    {"codiceRegione": "08", "valore": 13000},
+    {"codiceRegione": "08", "valore": 330000},
     {"codiceRegione": "09", "valore": 5000},
     {"codiceRegione": "10", "valore": 30000},
     {"codiceRegione": "11", "valore": 1500},
@@ -18,7 +18,7 @@
     {"codiceRegione": "16", "valore": 42000},
     {"codiceRegione": "17", "valore": 10000},
     {"codiceRegione": "18", "valore": 15000},
-    {"codiceRegione": "19", "valore": 20000},
+    {"codiceRegione": "19", "valore": 200000},
     {"codiceRegione": "20", "valore": 6000}
   ],
   "Trattorista": [

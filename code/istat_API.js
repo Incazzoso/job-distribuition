@@ -18,9 +18,8 @@ let simulatedData = null;
 async function loadSimulatedData() {
     if (simulatedData) return simulatedData;
     try {
-        // Assicurati che il percorso al file JSON sia corretto!
-        // Presumibilmente '../code/simulated_data.json' se il file è in una cartella 'code'
-        const response = await fetch('../code/simulated_data.json'); 
+        // CORREZIONE: Il percorso è relativo al file HTML.
+        const response = await fetch('./code/simulated_data.json'); 
         if (!response.ok) {
             throw new Error(`Errore nel caricamento dei dati simulati: Status ${response.status}`);
         }
@@ -31,7 +30,6 @@ async function loadSimulatedData() {
         return {};
     }
 }
-
 
 export async function getTuttiGliOccupati(codiciRegioneNumerici, professioneNome) {
     if (!professioneNome) return []; 

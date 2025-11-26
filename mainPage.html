@@ -6,6 +6,7 @@
     <title>Mappa Regioni Italiane</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="../style/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
 <body class="body_1">
@@ -24,43 +25,43 @@
     <div class="configuratore">
       <h2>Configuratore</h2>
       <label for="lavoro">Lavoro:</label>
-      <select id="lavoro">
-        <option value="">-- Seleziona un lavoro --</option>
-        <option value="Agricoltore">Agricoltore</option>
-        <option value="Trattorista">Trattorista</option>
-        <option value="Ingegnere">Ingegnere</option>
-        <option value="Programmatore">Programmatore</option>
-        <option value="Architetto">Architetto</option>
-        <option value="Operaio">Operaio</option>
-        <option value="Commessa">Commessa</option>
-        <option value="Pilota">Pilota</option>
-      </select>
+    <input class="mydatalist" list="datalist-lavoro" name="lavoro" id="lavoro" placeholder="Seleziona un lavoro">
+    <datalist id="datalist-lavoro">
+        <option value="Agricoltore">
+        <option value="Trattorista">
+        <option value="Ingegnere">
+        <option value="Programmatore">
+        <option value="Architetto">
+        <option value="Operaio">
+        <option value="Commessa">
+        <option value="Pilota">
+    </datalist>
 
       <label for="regione">Regione:</label>
-      <select id="regione">
-        <option value="">-- Seleziona una regione --</option>
-        <option>Tutte le regioni</option>
-        <option value="Abruzzo">Abruzzo</option>
-        <option value="Basilicata">Basilicata</option>
-        <option value="Calabria">Calabria</option>
-        <option value="Campania">Campania</option>
-        <option value="Emilia-Romagna">Emilia-Romagna</option>
-        <option value="Friuli-Venezia Giulia">Friuli-Venezia Giulia</option>
-        <option value="Lazio">Lazio</option>
-        <option value="Liguria">Liguria</option>
-        <option value="Lombardia">Lombardia</option>
-        <option value="Marche">Marche</option>
-        <option value="Molise">Molise</option>
-        <option value="Piemonte">Piemonte</option>
-        <option value="Puglia">Puglia</option>
-        <option value="Sardegna">Sardegna</option>
-        <option value="Sicilia">Sicilia</option>
-        <option value="Toscana">Toscana</option>
-        <option value="Trentino-Alto Adige">Trentino-Alto Adige</option>
-        <option value="Umbria">Umbria</option>
-        <option value="Valle d'Aosta">Valle d'Aosta</option>
-        <option value="Veneto">Veneto</option>
-      </select>
+      <input class="mydatalist" list="regione" name="regione" placeholder="Seleziona una regione">
+      <datalist id="regione">
+          <option value="Tutte le regioni">
+          <option value="Abruzzo">
+          <option value="Basilicata">
+          <option value="Calabria">
+          <option value="Campania">
+          <option value="Emilia-Romagna">
+          <option value="Friuli-Venezia Giulia">
+          <option value="Lazio">
+          <option value="Liguria">
+          <option value="Lombardia">
+          <option value="Marche">
+          <option value="Molise">
+          <option value="Piemonte">
+          <option value="Puglia">
+          <option value="Sardegna">
+          <option value="Sicilia">
+          <option value="Toscana">
+          <option value="Trentino-Alto Adige">
+          <option value="Umbria">
+          <option value="Valle d'Aosta">
+          <option value="Veneto">
+      </datalist>
 
       <label for="frequenza">Frequenza:</label>
       <select id="frequenza">
@@ -84,11 +85,9 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     <!-- Il tuo file JavaScript -->
-<script type="module" src="../code/map.js"></script>
-
-  <footer>
-    <p>&copy; 2025 Homepage - Tutti i diritti riservati</p>
-  </footer>
-
+<script src="code/map.js" type="module"></script> 
+    <footer>
+        <p>&copy; 2025 Homepage - Tutti i diritti riservati</p>
+    </footer>
 </body>
 </html>

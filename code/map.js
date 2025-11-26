@@ -141,10 +141,14 @@ async function updateMap() {
 
 // --- Avvio Iniziale ---
 
+// map.js
+// ... (omesso codice) ...
+
+// --- Avvio Iniziale ---
+
 async function initialize() {
     try {
-        // Carica il GeoJSON una sola volta
-        const geoJsonResponse = await fetch('../code/limits_IT_regions.geojson');
+        const geoJsonResponse = await fetch('./code/limits_IT_regions.geojson'); 
         if (!geoJsonResponse.ok) {
             throw new Error(`Impossibile caricare il GeoJSON. Controlla il percorso: Status ${geoJsonResponse.status}`);
         }
