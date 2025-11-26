@@ -121,6 +121,14 @@
       border: 2px solid black;
     }
 
+    .mydatalist{
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 20px;
+      border: 2px solid black;
+    }
+
     /* Sezione news di esempio */
     .news-section {
       background-color: white;
