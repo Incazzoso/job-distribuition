@@ -204,6 +204,21 @@ footer {
   background: #444;
 }
 
+@media (max-width: 1000px) {
+  .container {
+    flex-direction: column; /* impila i div uno sopra l’altro */
+  }
+
+  .configuratore {
+    order: 1; /* configuratore sopra */
+  }
+
+  .mappa {
+    order: 2; /* mappa sotto */
+  }
+}
+
+
 .title {
   color: black  ;
   font-family: Arial, sans-serif;
@@ -247,6 +262,10 @@ footer {
 
 .social-container a:hover {
   transform: scale(1.1);
+}
+
+.f{
+  background-color: #0077b6;
 }
 
 #facebook,
