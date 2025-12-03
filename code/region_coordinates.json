@@ -1,0 +1,22 @@
+[
+  { "nome": "Piemonte", "lat": 45.0703, "lon": 7.6869 },
+  { "nome": "Valle d'Aosta", "lat": 45.7372, "lon": 7.3200 },
+  { "nome": "Lombardia", "lat": 45.4642, "lon": 9.1900 },
+  { "nome": "Trentino-Alto Adige", "lat": 46.4983, "lon": 11.3548 },
+  { "nome": "Veneto", "lat": 45.4386, "lon": 12.3267 },
+  { "nome": "Friuli-Venezia Giulia", "lat": 45.6495, "lon": 13.7768 },
+  { "nome": "Liguria", "lat": 44.4056, "lon": 8.9463 },
+  { "nome": "Emilia-Romagna", "lat": 44.4949, "lon": 11.3426 },
+  { "nome": "Toscana", "lat": 43.7696, "lon": 11.2558 },
+  { "nome": "Umbria", "lat": 43.1122, "lon": 12.3888 },
+  { "nome": "Marche", "lat": 43.6167, "lon": 13.5167 },
+  { "nome": "Lazio", "lat": 41.9028, "lon": 12.4964 },
+  { "nome": "Abruzzo", "lat": 42.3512, "lon": 13.3984 },
+  { "nome": "Molise", "lat": 41.5600, "lon": 14.6600 },
+  { "nome": "Campania", "lat": 40.8522, "lon": 14.2681 },
+  { "nome": "Puglia", "lat": 41.1253, "lon": 16.8667 },
+  { "nome": "Basilicata", "lat": 40.6394, "lon": 15.8050 },
+  { "nome": "Calabria", "lat": 38.9108, "lon": 16.5860 },
+  { "nome": "Sicilia", "lat": 38.1157, "lon": 13.3615 },
+  { "nome": "Sardegna", "lat": 39.2238, "lon": 9.1217 }
+]

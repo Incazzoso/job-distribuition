@@ -1,17 +1,50 @@
-// map.js
-import { getTuttiGliOccupati } from './istat_API.js'; 
+import { getTuttiGliOccupati } from './istat_API.js';
 
 // Configurazione Iniziale
 const boundsItalia = [
     [35.5, 6.5],
     [47.2, 18.5]
 ];
+
 const map = L.map('map', {
     maxBounds: boundsItalia,
     maxBoundsViscosity: 1.0,
     minZoom: 6,
 }).setView([41.9, 12.5], 6);
 
+// Carica coordinate regioni (via fetch o require)
+let regioniCoordinate = [];
+
+async function caricaCoordinate() {
+  const response = await fetch('./code/region_coordinates.json');
+  regioniCoordinate = await response.json();
+}
+
+// Funzione zoom
+function zoomRegione(nomeRegione) {
+  const regione = regioniCoordinate.find(r => r.nome === nomeRegione);
+  if (regione) {
+    map.setView([parseFloat(regione.lat), parseFloat(regione.lon)], 8);
+    let bounds = layer.getBounds();
+
+    // disabilita interazioni
+    map.scrollWheelZoom.disable();
+    map.doubleClickZoom.disable();
+    map.touchZoom.disable();
+
+  } else {
+    console.warn("Regione non trovata:", nomeRegione);
+  }
+}
+
+// Collega l’evento all’input
+const regioneInput = document.getElementById('regioneInput');
+regioneInput.addEventListener('change', (event) => {
+  zoomRegione(event.target.value);
+});
+
+
+// --- Tile Layer ---
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
 }).addTo(map);
@@ -139,26 +172,18 @@ async function updateMap() {
     }
 }
 
-// --- Avvio Iniziale ---
-
-// map.js
-// ... (omesso codice) ...
-
-// --- Avvio Iniziale ---
-
 async function initialize() {
     try {
+        await caricaCoordinate();   // <-- carica sempre le coordinate
+
         const geoJsonResponse = await fetch('./code/limits_IT_regions.geojson'); 
         if (!geoJsonResponse.ok) {
-            throw new Error(`Impossibile caricare il GeoJSON. Controlla il percorso: Status ${geoJsonResponse.status}`);
+        throw new Error(`Impossibile caricare il GeoJSON. Status ${geoJsonResponse.status}`);
         }
         geoJsonDataCache = await geoJsonResponse.json();
 
-        // Collega l'evento al selettore di lavoro
         lavoroDropdown.addEventListener('change', updateMap);
-        
-        // Disegna la mappa iniziale (sarà grigia finché non si seleziona un lavoro)
-        await updateMap(); 
+        await updateMap();
 
     } catch (error) {
         console.error("Errore fatale nell'inizializzazione della mappa:", error);
