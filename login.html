@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Login</title>
+</head>
+<body class="body_3">
+    
+    <!-- Navbar -->
+    <nav>
+        <ul>
+        <li><a href="mainPage.html"><img src="/assets/icon home.png" alt="Icona" width="22.5" height="22.5"></a></li>
+        <li class="logo">  Lavorix </li>
+        <div class="spacer"></div>
+        <li><a href="follow_us.html">Follow Us</a></li>
+        <li><a href="#"><img src="/assets/Pfp.jpeg" alt="Icona" width="22.5" height="22.5"></a></li>
+        </ul> 
+    </nav>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="/submit_login" method="post">
+            <label class="label_1" for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+
+            <label class="label_1" for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <button type="submit">Accedi</button>
+        </form>
+    </div>
+    
+    <footer class="fixed-bottom">
+        <p>&copy; 2025 Login - Tutti i diritti riservati</p>
+    </footer>
+</body>
+</html>
