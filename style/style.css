@@ -244,7 +244,7 @@ footer {
     inset 2px 2px 10px #00000080, inset 2px 2px 10px #00000080,
     inset 2px 2px 10px #00000080;
   border-radius: 20px;
-  padding: 10px 15px;
+  padding: 15px 15px;
   margin: 0 40px;
   animation: animate 3s linear infinite;
   text-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff,
@@ -268,6 +268,7 @@ footer {
 }
 #youtube {
   animation-delay: 0.7s;
+  padding-left: 13px;
 }
 #gmail {
   animation-delay: 0.8s;
