@@ -1,56 +1,50 @@
-// istat_API.js
-
-// Nota: la mappa professioneCodici non è più usata ma la lascio per completezza
-const professioneCodici = {
-    "Agricoltore": "6", 
-    "Trattorista": "6",
-    "Ingegnere": "2",
-    "Programmatore": "2",
-    "Architetto": "2",
-    "Operaio": "8",
-    "Commessa": "5",
-    "Pilota": "2",
-    // DEVI COMPLETARE TUTTI GLI ALTRI LAVORI QUI!
-};
+/**
+ * istat_API.js
+ * Gestisce il recupero dei dati occupazionali (simulati).
+ */
 
 let simulatedData = null;
 
+/**
+ * Carica il file JSON dei dati simulati una sola volta (Singleton).
+ */
 async function loadSimulatedData() {
     if (simulatedData) return simulatedData;
+
     try {
-        // CORREZIONE: Il percorso è relativo al file HTML.
-        const response = await fetch('./code/simulated_data.json'); 
+        const response = await fetch('./code/simulated_data.json');
         if (!response.ok) {
-            throw new Error(`Errore nel caricamento dei dati simulati: Status ${response.status}`);
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
         simulatedData = await response.json();
         return simulatedData;
     } catch (error) {
-        console.error("Errore fatale nel caricamento del JSON di simulazione:", error);
-        return {};
+        console.error("Errore nel caricamento del JSON di simulazione:", error);
+        return null; // Ritorna null per segnalare un errore di caricamento
     }
 }
 
-export async function getTuttiGliOccupati(codiciRegioneNumerici, professioneNome) {
-    if (!professioneNome) return []; 
-    
-    // 1. Carica i dati simulati
+/**
+ * Recupera i dati degli occupati per una specifica professione.
+ * @param {Array} _codiciRegioneNumerici - (Non usato nel mock, mantenuto per compatibilità futura)
+ * @param {string} professioneNome - Nome della professione da cercare nel JSON
+ * @returns {Promise<Array>} Array di oggetti {codiceRegione, valore}
+ */
+export async function getTuttiGliOccupati(_codiciRegioneNumerici, professioneNome) {
+    if (!professioneNome) return [];
+
     const data = await loadSimulatedData();
 
-    // 2. Cerca il risultato per la professione selezionata
-    // Il JSON è strutturato: { "NomeLavoro": [ {codiceRegione: "03", valore: 12345}, ... ] }
-    const results = data[professioneNome];
-
-    if (!results) {
-        console.warn(`Dati simulati non trovati per la professione: ${professioneNome}.`);
+    // Gestione caso in cui il file non sia stato caricato o la professione manchi
+    if (!data || !data[professioneNome]) {
+        console.warn(`Dati non disponibili per: ${professioneNome}`);
         return [];
     }
-    
-    // 3. Restituisce i dati così come sono. 
-    // La logica di matching e normalizzazione ISTAT è spostata in map.js.
-    return results.map(item => ({
-        // Assicurati solo che il codice sia sempre una stringa
-        codiceRegione: String(item.codiceRegione), 
-        valore: item.valore 
+
+    // Restituisce i dati assicurandosi che il codiceRegione sia una stringa
+    // Usiamo .map per garantire l'integrità dei dati uscenti
+    return data[professioneNome].map(item => ({
+        codiceRegione: String(item.codiceRegione),
+        valore: Number(item.valore) || 0
     }));
 }
